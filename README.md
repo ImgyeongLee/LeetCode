@@ -7,6 +7,19 @@ LeetCode Practice
 `MS` means My Solution
 `TVS` means Top Voted Solution
 
+###
+
+Study Plan: https://neetcode.io/roadmap
+
+#### ※ TODO (KST 2023-07-17):
+
+[ ] Group Anagrams (Array & Hashing)
+[ ] Top K Frequent Elements (Array & Hashing)
+[ ] Product of Array Except Self (Array & Hashing)
+[ ] Valid Palindrome (Two Pointers)
+
+---
+
 step 1: start by top 100 liked questions
 step 2: focus on the questions by topic
 step 3: order the questions from the highest to lowest acceptance rate
