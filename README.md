@@ -11,7 +11,7 @@ LeetCode Practice
 
 Study Plan: https://neetcode.io/roadmap
 
-#### ※ TODO (KST 2023-07-17):
+#### ※ TODO (KST 2023-07-18):
 
 - [ ] Group Anagrams (Array & Hashing)
 - [ ] Top K Frequent Elements (Array & Hashing)
