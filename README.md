@@ -11,10 +11,8 @@ LeetCode Practice
 
 Study Plan: https://neetcode.io/roadmap
 
-#### ※ TODO (KST 2023-07-18):
+#### ※ TODO (KST 2023-07-22):
 
-- [ ] Group Anagrams (Array & Hashing)
-- [ ] Top K Frequent Elements (Array & Hashing)
 - [ ] Product of Array Except Self (Array & Hashing)
 - [ ] Valid Palindrome (Two Pointers)
 
