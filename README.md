@@ -11,10 +11,11 @@ LeetCode Practice
 
 Study Plan: https://neetcode.io/roadmap
 
-#### ※ TODO (KST 2023-07-22):
+#### ※ TODO (KST 2023-08-01):
 
-- [ ] Product of Array Except Self (Array & Hashing)
-- [ ] Valid Palindrome (Two Pointers)
+- [ ] Valid Sudoku
+- [ ] Encode and Decode Strings
+- [ ] Longest Consecutive Sequence
 
 ---
 
