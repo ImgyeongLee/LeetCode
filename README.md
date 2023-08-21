@@ -11,11 +11,11 @@ LeetCode Practice
 
 Study Plan: https://neetcode.io/roadmap
 
-#### ※ TODO (KST 2023-08-01):
+#### ※ TODO (KST 2023-08-22):
 
 - [ ] Valid Sudoku
 - [ ] Encode and Decode Strings
-- [ ] Longest Consecutive Sequence
+- [x] Longest Consecutive Sequence
 
 ---
 
