@@ -3,7 +3,7 @@
  * @return {boolean}
  */
 var isValidSudoku = function (board) {
-  return isValidCol(board) && isValidRow(board);
+  return isValidCol(board) && isValidRow(board) && isValidBox(board);
 };
 
 // Check columns
@@ -50,18 +50,21 @@ var isValidRow = function (board) {
 var isValidBox = function (board) {
   const numCol = board[0].length;
   const numRow = board.length;
-  var boxCount = 1;
 
-  for (let row = 0; row < numRow; row++) {
-    var hashmap = new Map();
-    for (let col = 0; col < numCol; col++) {
-      if (board[row][col] === ".") {
-        continue;
+  for (let row = 0; row < numRow; row += 3) {
+    for (let col = 0; col < numCol; col += 3) {
+      var hashmap = new Map();
+      for (let i = row; i < row + 3; i++) {
+        for (let j = col; j < col + 3; j++) {
+          if (board[i][j] === ".") {
+            continue;
+          }
+          if (hashmap.has(board[i][j])) {
+            return false;
+          }
+          hashmap.set(board[i][j], true);
+        }
       }
-      if (hashmap.has(board[row][col])) {
-        return false;
-      }
-      hashmap.set(board[row][col], true);
     }
   }
 
@@ -80,4 +83,7 @@ const board = [
   [".", ".", ".", ".", "8", ".", ".", "7", "9"],
 ];
 
-console.log(isValidSudoku(board));
+console.log(isValidBox(board));
+
+// Runtime - 63ms       | Beats 85.51% of users with JavaScript
+// Memory - 45.22mb     | Beats 56.24% of users with JavaScript

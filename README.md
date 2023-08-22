@@ -13,9 +13,9 @@ Study Plan: https://neetcode.io/roadmap
 
 #### ※ TODO (KST 2023-08-22):
 
-- [ ] Valid Sudoku
+- [ ] Two Sum II Input Array Is Sorted
 - [ ] Encode and Decode Strings
-- [x] Longest Consecutive Sequence
+- [ ] Min Stack (C++)
 
 ---
 
