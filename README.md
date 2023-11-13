@@ -11,12 +11,6 @@ LeetCode Practice
 
 Study Plan: https://neetcode.io/roadmap
 
-#### ※ TODO (KST 2023-08-22):
-
-- [ ] Two Sum II Input Array Is Sorted
-- [ ] Encode and Decode Strings
-- [ ] Min Stack (C++)
-
 ---
 
 - step 1: start by top 100 liked questions
