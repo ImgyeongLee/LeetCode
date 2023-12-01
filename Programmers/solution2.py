@@ -104,6 +104,8 @@ def solution(arr, divisor):
 
     return sorted(answer)
 
+# From peer review: element > divisor (additional condition -> increase speed efficiency)
+
 
 # 핸드폰 번호 가리기
 def solution10(phone_number):
