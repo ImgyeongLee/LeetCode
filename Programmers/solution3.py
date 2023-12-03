@@ -1,3 +1,5 @@
+import math
+
 # 가운데 글자 가져오기
 def solution1(s):
     length = len(s)
@@ -52,7 +54,7 @@ def solution6(arr1, arr2):
 
 # 최대공약수와 최소공배수
 def solution7(n, m):
-    answer = []
+    answer = [math.gcd(n, m), n * m // math.gcd(n, m)]
     return answer
 
 # 이상한 문자 만들기
@@ -81,16 +83,58 @@ def solution9(s, n):
         if ord(c) == 32:
             password += c
             continue
-        cizer= ord(c) + n
-        if ord(c) >= 97 and ord(c) <= 122 and cizer > 122:
-            cizer = 96 + n
-        elif ord(c) >= 65 and ord(c) <= 90 and cizer > 90:
-            cizer = 64 + n
-
-        password += chr(cizer)
+        cizer = ord(c) + n
+        # Check if the original character was lowercase
+        if (ord(c) >= 97 and ord(c) <= 122) and cizer > 122:
+            password += chr(96 + (cizer - 122))
+        # Check if the original character was uppercase
+        elif (ord(c) >= 65 and ord(c) <= 90) and cizer > 90:
+            password += chr(64 + (cizer - 90))
+        else:
+            password += chr(cizer)
 
     return password
 
+# 숫자 문자열과 영단어
+def solution10(s):
+    my_dict = {
+        "zero": 0,
+        "one": 1,
+        "two": 2,
+        "three": 3,
+        "four": 4,
+        "five": 5,
+        "six": 6,
+        "seven": 7,
+        "eight": 8,
+        "nine": 9
+    }
+
+    answer = ""
+    checker = ""
+
+    for c in s:
+        if c.isdigit():
+            answer += c
+        else:
+            checker += c
+
+        if checker in my_dict:
+            answer += str(my_dict[checker])
+            checker = ""
+
+    return int(answer)
+
+# k 번째 수
+def solution11(array, commands):
+    result = []
+    for command in commands:
+        sliced_array = array[command[0] - 1:command[1]]
+        sliced_array.sort()
+        result.append(sliced_array[command[2] - 1])
+    return result
+
+
 if __name__ == "__main__":
-    print(ord('Z'))
-    print(solution9("a", 4))
+    #print(ord('y'))
+    print(solution9("a B z", 4))
