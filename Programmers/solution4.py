@@ -31,6 +31,7 @@ def solution2(a, b):
 
     return days[b - current_date]
 
+
 # 모의고사
 def solution3(answers):
     record = {"1": 0, "2": 0, "3": 0}
@@ -79,6 +80,7 @@ def solution3(answers):
 
     return result
 
+
 # 실패율
 def solution4(N, stages):
     sorted_stages = sorted(stages)
@@ -111,6 +113,21 @@ def solution4(N, stages):
     return result
 
 
+# 체육복
+def solution5(n, lost, reserve):
+    filtered_lost = list(set(lost) - set(reserve))
+    filtered_reserve = list(set(reserve) - set(lost))
+
+    for student in filtered_lost:
+        if student - 1 in filtered_reserve:
+            filtered_reserve.remove(student - 1)
+        elif student + 1 in filtered_reserve:
+            filtered_reserve.remove(student + 1)
+        else:
+            n -= 1
+
+    return n
+
 
 # 크레인 인형 뽑기
 def solution6(board, moves):
@@ -139,6 +156,7 @@ def solution6(board, moves):
             break
 
     return count
+
 
 # 키패드 누르기
 def solution7(numbers, hand):
@@ -188,41 +206,54 @@ def solution7(numbers, hand):
 
     return "".join(answer)
 
+
 # 신규 아이디 추천
 def solution8(new_id):
     valid_character = ["-", "_", "."]
+    temp = ""
 
-    if len(new_id) > 0:
-        # phase 1
-        for i in range(0, len(new_id)):
-            if new_id[i].isalpha():
-                new_id = list(new_id)
-                new_id[i] = chr(ord(new_id[i]) + 32)
-                new_id = "".join(new_id)
-        # phase 2
-        for i in range(0, len(new_id) - 1):
-            if not (new_id[i].isalpha() or new_id[i] in valid_character):
-                new_id = new_id[:i] + new_id[i + 1:]
-
-        # phase 3
-        concat_flag = False
-        start_idx = 0
-
-        for i in range(0, len(new_id)):
-            if (not concat_flag) and new_id[i] == ".":
-                concat_flag = True
-                start_idx = i
-            elif concat_flag and new_id[i] == ".":
-                continue
+    # phase 1 and phase 2
+    for character in new_id:
+        if character.isalpha():
+            if ord(character) < 97:
+                temp += chr(ord(character) + 32)
             else:
-                concat_flag = False
-                new_id = new_id[:start_idx + 1] + new_id[i + 1:]
+                temp += character
 
-        # phase 4
-        if new_id[0] == ".":
-            new_id = new_id[1:]
-        elif new_id[len(new_id) - 1] == ".":
-            new_id = new_id[len(new_id):]
+        if character.isdigit() or character in valid_character:
+            temp += character
+
+    # update new_id
+    new_id = temp
+
+    # phase 3
+    temp = ""
+    dot_concat_flag = False
+
+    for character in new_id:
+        if dot_concat_flag:
+            if character != ".":
+                dot_concat_flag = False
+                temp += character
+        else:
+            if character == ".":
+                dot_concat_flag = True
+                temp += character
+            else:
+                temp += character
+
+    new_id = temp
+
+    # phase 4
+    if len(new_id) > 0:
+        if len(new_id) == 1:
+            if new_id[0] == ".":
+                new_id = ""
+        else:
+            if new_id[0] == ".":
+                new_id = new_id[1:]
+            if new_id[len(new_id) - 1] == ".":
+                new_id = new_id[:(len(new_id) - 1)]
 
     # phase 5
     if len(new_id) == 0:
@@ -232,10 +263,14 @@ def solution8(new_id):
     if len(new_id) > 15:
         new_id = new_id[:15]
 
+        if new_id[len(new_id) - 1] == ".":
+            new_id = new_id[:(len(new_id) - 1)]
+
     # phase 7
     if len(new_id) < 3:
-        diff = 3 - len(new_id)
-        new_id += new_id[len(new_id) - 1] * diff
+        last_character = new_id[len(new_id) - 1]
+        while len(new_id) < 3:
+            new_id += last_character
 
     return new_id
 
@@ -293,6 +328,41 @@ def solution9(survey, choices):
 
     return result
 
+
+# 개인정보 수집 기간
+def solution10(today, terms, privacies):
+    # 0: year 1: month 2: date
+    today_list = today.split(".")
+    today_date = int(today_list[0]) * 12 * 28 + int(today_list[1]) * 28 + int(today_list[2])
+
+    term_data = {}
+    privacy_list = []
+
+    for term in terms:
+        term_name = term.split(" ")[0]
+        term_data[term_name] = int(term.split(" ")[1])
+
+    for privacy in privacies:
+        data = {}
+        date_list = (privacy.split(" ")[0]).split(".")
+        converted_date = int(date_list[0]) * 12 * 28 + int(date_list[1]) * 28 + int(date_list[2])
+        data["term"] = privacy.split(" ")[1]
+        data["date"] = converted_date
+        privacy_list.append(data)
+
+    idx = 1
+    answer = []
+
+    for data in privacy_list:
+        valid_date = data["date"] + term_data[data["term"]] * 28
+        if valid_date - 1 < today_date:
+            answer.append(idx)
+
+        idx += 1
+
+    return answer
+
+
 # 신고 결과 받기
 def solution11(id_list, report, k):
     record = {}
@@ -315,6 +385,4 @@ def solution11(id_list, report, k):
 
 
 if __name__ == "__main__":
-    print(solution8("...!@BaT#*..y.abcdefghijklm"))
-    test = "0123456"
-    print(test[:3])
+    print(solution5(5, [4, 5], [3, 4]))
