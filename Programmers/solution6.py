@@ -1,3 +1,4 @@
+from sys import byteorder
 # H-index
 def solution1(citations):
     if sum(citations) == 0:
@@ -69,4 +70,5 @@ def solution4(s):
 
 if __name__ == "__main__":
     s = "{{4,2,3},{3},{2,3,4,1},{2,3}}"
-    print(solution4(s))
+    # print(solution4(s))
+    print(byteorder)

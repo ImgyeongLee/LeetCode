@@ -1,3 +1,4 @@
+import random
 # 문자열 내 마음대로 정렬하기
 def solution1(strings, n):
     return sorted(strings, key=lambda word: (word[n], word))
@@ -382,7 +383,19 @@ def solution11(id_list, report, k):
                 mailing[user] += 1
 
     return list(mailing.values())
+def betting(n):
+    betting_arr = [3, 2, 2, 1, 1, 1, 0, 0, 0, "특별상품"]
+    random_number = random.randint(0, 9)
 
+    print(random_number)
+
+    # 특별상품 당첨 시
+    if random_number == 9:
+        return betting_arr[random_number] + "에 당첨되셨습니다. 총괄계를 멘션해주세요!"
+    # 그 이외
+    else:
+        result = betting_arr[random_number] * n
+        return str(result) + "에클을 얻으셨습니다."
 
 if __name__ == "__main__":
-    print(solution5(5, [4, 5], [3, 4]))
+    print(betting(2))
